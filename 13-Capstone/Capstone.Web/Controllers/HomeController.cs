@@ -21,6 +21,11 @@ namespace Capstone.Web.Controllers
             this.weatherDal = weatherDal;
         }
 
+        public IActionResult Detail()
+        {
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
