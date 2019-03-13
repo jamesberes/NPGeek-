@@ -13,6 +13,8 @@ namespace Capstone.Web.Models
         public int High { get; set; }
         public string Forecast { get; set; }
 
+        //can store the values of the converted temps (CelciusHigh, CelciusLow) in the model. 
+        //T(°F) = T(°C) × 1.8 + 32
         public int HighCelcius
         {
             get { return (int)(Math.Round((High - 32) / 1.8)); }
