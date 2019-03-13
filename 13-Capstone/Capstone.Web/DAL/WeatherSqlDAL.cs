@@ -47,6 +47,15 @@ namespace Capstone.Web.DAL
                         };
 
                         weather.Add(singleWeather);
+
+                        //change forecast name of partly cloudy to match the image name so we can display it via property call in detail view page. 
+                        foreach (var day in weather)
+                        {
+                            if (day.Forecast == "partly cloudy")
+                            {
+                                day.Forecast = "partlyCloudy";
+                            }
+                        }
                         
                     }
                 }
