@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Capstone.Web.Models;
 using Capstone.Web.DAL;
+using Microsoft.AspNetCore.Http;
 
 namespace Capstone.Web.Controllers
 {
@@ -28,7 +29,9 @@ namespace Capstone.Web.Controllers
 
             //send in a temperature scale?
 
-            return View(park);
+            DetailViewModel dvm = new DetailViewModel(park, weather);
+
+            return View(dvm);
         }
 
         [HttpGet]
