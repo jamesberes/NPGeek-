@@ -3,9 +3,17 @@
     ViewData["Title"] = "Home Page";
 }
 
+<link href="~/css/index.css" rel="stylesheet" />
+
 @foreach (var park in Model)
 {
-    <p><img src="~/img/parks/@(park.ParkCode).jpg" /></p>
-    <p><a asp-controller="home" asp-action="detail" asp-route-parkCode="@park.ParkCode">@park.ParkName</a></p>
-    <p>@park.Description</p>
+    <div class="park">
+        <div class="image">
+            <p><img src="~/img/parks/@(park.ParkCode).jpg" /></p>
+        </div>
+        <div class="information">
+            <p><a asp-controller="home" asp-action="detail" asp-route-parkCode="@park.ParkCode">@park.ParkName</a></p>
+            <p>@park.Description</p>
+        </div>
+    </div>
 }

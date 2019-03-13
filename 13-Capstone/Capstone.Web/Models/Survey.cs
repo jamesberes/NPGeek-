@@ -92,6 +92,5 @@ namespace Capstone.Web.Models
             new SelectListItem { Text = "Wyoming" }
         };
 
-
     }
 }
