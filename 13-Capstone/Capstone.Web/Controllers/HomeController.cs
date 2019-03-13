@@ -21,8 +21,11 @@ namespace Capstone.Web.Controllers
             this.weatherDal = weatherDal;
         }
 
-        public IActionResult Detail()
+        public IActionResult Detail(string parkCode)
         {
+            Park park = parkDal.GetPark(parkCode);
+
+
             return View();
         }
 
