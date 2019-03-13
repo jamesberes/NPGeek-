@@ -10,7 +10,9 @@ namespace Capstone.Web.DAL
 {
     public class SurveySqlDAL : ISurveyDAL
     {
-        private string connectionString;
+        private readonly string connectionString;
+        private const string SQL_GetFavoriteParkBySurveyCount = "SELECT COUNT(*) AS surveyCount, parkCode FROM survey_result GROUP BY parkCode ORDER BY surveyCount DESC, parkCode;";
+        string SQL_SaveNewSurvey = "INSERT INTO survey_result VALUES (@parkCode, @emailAddress, @state, @activityLevel);";
 
         public SurveySqlDAL(string connectionString)
         {
@@ -27,17 +29,16 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
 
-                    string sql = "SELECT COUNT(*) AS votes, parkCode FROM survey_result GROUP BY parkCode ORDER BY votes DESC, parkCode;";
-                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    SqlCommand cmd = new SqlCommand(SQL_GetFavoriteParkBySurveyCount, conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
                         string parkCode = Convert.ToString(reader["parkCode"]);
-                        int votes = Convert.ToInt32(reader["votes"]);
+                        int surveyCount = Convert.ToInt32(reader["surveyCount"]);
 
-                        output.Add(parkCode, votes);
+                        output.Add(parkCode, surveyCount);
                     }
                 }
             }
@@ -58,8 +59,7 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
 
-                    string sql = "INSERT INTO survey_result VALUES (@parkCode, @emailAddress, @state, @activityLevel);";
-                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    SqlCommand cmd = new SqlCommand(SQL_SaveNewSurvey, conn);
                     cmd.Parameters.AddWithValue("@parkCode", survey.ParkCode);
                     cmd.Parameters.AddWithValue("@emailAddress", survey.Email);
                     cmd.Parameters.AddWithValue("@state", survey.State);
