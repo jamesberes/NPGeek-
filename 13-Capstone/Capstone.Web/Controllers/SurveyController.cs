@@ -30,5 +30,27 @@ namespace Capstone.Web.Controllers
             //ViewBag.ParkSelectList = parkDAL.GetParkSelectList();
             return View(survey);
         }
-    }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult NewSurvey(Survey survey)
+        {
+            surveyDAL.SaveNewSurvey(survey);
+            return RedirectToAction(nameof(Results));
+        }
+
+        [HttpGet]
+        public IActionResult Results()
+        {
+            Dictionary<string, int> surveysAndTheirCounts = surveyDAL.GetFavoriteParkBySurveyCount();
+
+            SurveyResultsViewModel srvm = new SurveyResultsViewModel()
+            {
+                Results = surveysAndTheirCounts,
+                Parks = parkDAL.GetAllParks()
+            };
+            return View(srvm);
+        }
+
+
 }
