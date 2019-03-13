@@ -1,4 +1,5 @@
 ﻿using Capstone.Web.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,7 @@ namespace Capstone.Web.DAL
         IList<Park> GetAllParks();
 
         Park GetPark(string parkCode);
+
+        List<SelectListItem> GetParkSelectList();
     }
 }

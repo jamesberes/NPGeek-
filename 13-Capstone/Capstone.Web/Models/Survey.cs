@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Capstone.Web.Models;
 
 namespace Capstone.Web.Models
 {
@@ -13,5 +15,20 @@ namespace Capstone.Web.Models
         public string Email { get; set; }
         public string State { get; set; }
         public string ActivityLevel { get; set; }
+
+        public List<SelectListItem> Parks { get; set; }
+
+        public static List<SelectListItem> ActivityLevels = new List<SelectListItem>()
+        {
+            new SelectListItem() { Text = "Inactive" },
+            new SelectListItem() { Text = "Sedentary" },
+            new SelectListItem() { Text = "Active" },
+            new SelectListItem() { Text = "Extremely Active" }
+        };
+
+        //public static List<SelectListItem> Parks = new List<SelectListItem>(IList<Park> parks)
+        //{
+
+        //}
     }
 }

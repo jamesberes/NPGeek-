@@ -1,0 +1,42 @@
+﻿@model Capstone.Web.Models.Survey
+
+@{
+    ViewData["Title"] = "NewSurvey";
+}
+
+<h2>NewSurvey</h2>
+
+<h4>TAKE OUR SURVEY</h4>
+<hr />
+
+<form asp-action="NewSurvey" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="ParkCode" class="control-label"></label>
+        <select asp-for="ParkCode" asp-items="@Model.Parks"></select>
+        <span asp-validation-for="ParkCode" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="State" class="control-label"></label>
+        <input asp-for="State" class="form-control" />
+        <span asp-validation-for="State" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ActivityLevel" class="control-label"></label>
+        <select asp-for="ActivityLevel" asp-items="Survey.ActivityLevels"></select>
+        <span asp-validation-for="ActivityLevel" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-default" />
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
