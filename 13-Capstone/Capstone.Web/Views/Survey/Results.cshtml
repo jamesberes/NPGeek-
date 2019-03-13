@@ -22,15 +22,15 @@
 
 @foreach (KeyValuePair<string, int> kvp in Model.Results)
 {
-    @if (kvp.Value > 1)
+    @if (kvp.Value >= 1)
     {
         <div class="result-container">
             <div>
-                <img id="survey-result-img" src="~/images/@(kvp.Key).jpg" />
+                <img id="survey-result-img" src="~/img/parks/@(kvp.Key).jpg" />
             </div>
             <div class="result-info">
-                <p><strong>Number of Votes:</strong> @kvp.Value</p>
-                <p id="survey-result-name">@(Model.Parks.FirstOrDefault(prop => prop.ParkCode == kvp.Key).ParkName)</p>
+                <p><strong>Votes:</strong> @kvp.Value</p>
+                <p>@(Model.Parks.FirstOrDefault(prop => prop.ParkCode == kvp.Key).ParkName)</p>
                 <p>@(Model.Parks.FirstOrDefault(p => p.ParkCode == kvp.Key).Description)</p>
             </div>
         </div>
