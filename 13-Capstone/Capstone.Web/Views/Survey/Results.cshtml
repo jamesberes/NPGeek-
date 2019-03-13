@@ -1,0 +1,38 @@
+﻿@model SurveyResultsViewModel
+
+@{
+    ViewData["Title"] = "Results";
+}
+
+<style>
+    .result-container{
+        display: flex;
+        height: 40%;
+        padding: 10px;
+        flex-direction: row;
+    }
+
+    .result-info{
+        flex-direction: column;
+    }
+</style>
+
+
+<h2>Results</h2>
+
+@foreach (KeyValuePair<string, int> kvp in Model.Results)
+{
+    @if (kvp.Value > 1)
+    {
+        <div class="result-container">
+            <div>
+                <img id="survey-result-img" src="~/images/@(kvp.Key).jpg" />
+            </div>
+            <div class="result-info">
+                <p><strong>Number of Votes:</strong> @kvp.Value</p>
+                <p id="survey-result-name">@(Model.Parks.FirstOrDefault(prop => prop.ParkCode == kvp.Key).ParkName)</p>
+                <p>@(Model.Parks.FirstOrDefault(p => p.ParkCode == kvp.Key).Description)</p>
+            </div>
+        </div>
+    }
+}
