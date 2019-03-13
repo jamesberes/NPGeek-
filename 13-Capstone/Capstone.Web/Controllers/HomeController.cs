@@ -24,7 +24,9 @@ namespace Capstone.Web.Controllers
         public IActionResult Detail(string parkCode)
         {
             Park park = parkDal.GetPark(parkCode);
+            IList<Weather> weather = weatherDal.GetWeatherByPark(parkCode);
 
+            //send in a temperature scale?
 
             return View();
         }

@@ -11,7 +11,7 @@ namespace Capstone.Web.Models
         public int FiveDayForecastValue { get; set; }
         public int Low { get; set; }
         public int High { get; set; }
-        public string Forecast { get; set; }
+        public string Forecast { get; set; } //might run into error with partly cloudy having a space. 
 
         //can store the values of the converted temps (CelciusHigh, CelciusLow) in the model. 
         //T(°F) = T(°C) × 1.8 + 32
