@@ -3,27 +3,82 @@
     ViewData["Title"] = "Detail";
 }
 
-<p><img src="~/img/parks/@(Model.Park.ParkCode).jpg" /></p>
-<p>@Model.Park.ParkName</p>
-<p>@Model.Park.State</p>
-<p>@Model.Park.Acreage</p>
-<p>@Model.Park.ElevationInFt</p>
-<p>@Model.Park.MilesOfTrail</p>
-<p>@Model.Park.NumberOfCampsites</p>
-<p>@Model.Park.Climate</p>
-<p>@Model.Park.YearFounded</p>
-<p>@Model.Park.AnnualVisitors</p>
-<p>@Model.Park.InspirationalQuote</p>
-<p>@Model.Park.QuoteSource</p>
-<p>@Model.Park.Description</p>
-<p>@Model.Park.EntryFee</p>
-<p>@Model.Park.NumberOfSpecies</p>
+<style>
+    .weather-info{
+        display: inline-block;
+        max-width: 150px;
+        vertical-align: top;
+    }
+    .weather-image{
+        height: 150px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .recommendations{
+        margin: 0px 5px 0px 5px;
+    }
+</style>
 
-@foreach (var day in Model.Weather)
-{
-    <p><img src="~/img/weather/@(day.Forecast).png" /></p>
-    <p>@day.FiveDayForecastValue</p>
-    <p>@day.High</p>
-    <p>@day.Low</p>
-    <p>@day.Forecast</p>
-}
+
+<div>
+    <div class="detail-header-container">
+        <img id="detail-header-image" src="~/img/parks/@(Model.Park.ParkCode).jpg" />
+        <div>
+            <h2 id="detail-header-park-name">@Model.Park.ParkName</h2>
+        </div>
+    </div>
+
+    <div class="detail-body">
+        <p class="badge">
+            <strong>State: </strong>@Model.Park.State
+        </p>
+        <p class="badge">
+            <strong>Acreage: </strong>@Model.Park.Acreage
+        </p>
+        <p class="badge">
+            <strong>Elevation: </strong>@Model.Park.ElevationInFt
+        </p>
+        <p class="badge">
+            <strong>Miles of Trail: </strong>@Model.Park.MilesOfTrail
+        </p>
+        <p class="badge">
+            <strong>Number of Campsites: </strong>@Model.Park.NumberOfCampsites
+        </p>
+        <p class="badge">
+            <strong>Climate: </strong>@Model.Park.Climate
+        </p>
+        <p class="badge">
+            <strong>Founding Year: </strong>@Model.Park.YearFounded
+        </p>
+        <p class="badge">
+            <strong>Annual Visitors: </strong>@Model.Park.AnnualVisitors
+        </p>
+        <p class="badge">
+            <strong>Number of Species: </strong>@Model.Park.NumberOfSpecies
+        </p>
+        <p class="entry-fee">
+            <strong>Entry Fee: </strong>@Model.Park.EntryFee.ToString("C")
+        </p>
+        <p class="detail-description">
+            @Model.Park.Description
+        </p>
+    </div>
+
+    <p class=blockquote-reverse>"@Model.Park.InspirationalQuote"</p>
+    <p class="blockquote-reverse">-@Model.Park.QuoteSource</p>
+
+    <br />
+    <br />
+
+    @*TACKLE THE WEATHAAAAAAAAA*@
+    <div id="weather-table">
+        @foreach (var day in Model.Weather)
+        {
+        <div class="weather-info">
+            <img class="weather-image" src="~/img/weather/@(day.Forecast).png" />
+            <p><strong>High: </strong>@day.High  <strong>Low: </strong>@day.Low</p>
+            <p class="recommendations">@Model.TempRecommendations(day)</p>
+        </div>
+        }
+    </div>
+</div>
