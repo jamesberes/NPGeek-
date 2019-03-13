@@ -1,4 +1,8 @@
-﻿@model Park
+﻿@model DetailViewModel
 @{
     ViewData["Title"] = "Detail";
 }
+
+<p><img src="~/img/parks/@(Model.Park.ParkCode).jpg" /></p>
+<p>@Model.Park.ParkName</p>
+<p>@Model.Park.Description</p>
