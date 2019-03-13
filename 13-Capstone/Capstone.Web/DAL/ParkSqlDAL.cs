@@ -40,7 +40,7 @@ namespace Capstone.Web.DAL
                         park.ParkName = Convert.ToString(reader["parkName"]);
                         park.State = Convert.ToString(reader["state"]);
                         park.Acreage = Convert.ToInt32(reader["acreage"]);
-                        park.ElevationInFt = Convert.ToInt32(reader["elevationInFeett"]);
+                        park.ElevationInFt = Convert.ToInt32(reader["elevationInFeet"]);
                         park.MilesOfTrail = Convert.ToDouble(reader["milesOfTrail"]);
                         park.NumberOfCampsites = Convert.ToInt32(reader["numberOfCampsites"]);
                         park.Climate = Convert.ToString(reader["climate"]);
