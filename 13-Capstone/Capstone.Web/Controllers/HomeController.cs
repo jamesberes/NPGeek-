@@ -5,17 +5,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Capstone.Web.Models;
+using Capstone.Web.DAL;
 
 namespace Capstone.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private IParkDAL parkDal;
+        private IWeatherDAL weatherDal;
+
+        // create with DALs for convenience
+        public HomeController(IParkDAL parkDal, IWeatherDAL weatherDal)
         {
-            return View();
+            this.parkDal = parkDal;
+            this.weatherDal = weatherDal;
         }
 
-      
+        [HttpGet]
+        public IActionResult Index()
+        {
+            var parks = parkDal.GetAllParks();
+
+            return View(parks);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
