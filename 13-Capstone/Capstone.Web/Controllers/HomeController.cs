@@ -21,6 +21,16 @@ namespace Capstone.Web.Controllers
             this.weatherDal = weatherDal;
         }
 
+        public IActionResult Detail(string parkCode)
+        {
+            Park park = parkDal.GetPark(parkCode);
+            IList<Weather> weather = weatherDal.GetWeatherByPark(parkCode);
+
+            //send in a temperature scale?
+
+            return View(park);
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -29,11 +39,6 @@ namespace Capstone.Web.Controllers
             return View(parks);
         }
 
-        public IActionResult Detail(string parkCode)
-        {
-            var park = parkDal.GetPark(parkCode);
-            return View(park);
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
