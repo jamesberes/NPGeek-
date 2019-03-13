@@ -1,12 +1,15 @@
 ﻿.park {
     display: flex;
-    margin: 10px;
 }
 
-    .park .image {
-
+    .park .information {
+        padding-left: 15px;
     }
 
-    .park .information {
-        margin: 10px;
+    .link {
+        font-size: 2em;
+    }
+
+    .link a {
+        color:aqua;
     }
