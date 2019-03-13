@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Capstone.Web.DAL;
 
 namespace Capstone.Web
 {
@@ -29,6 +30,14 @@ namespace Capstone.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            //SET CONNECTION STRING DEFAULT
+            string connectionString = Configuration.GetConnectionString("Default");
+
+            //DEPENDENCY INJECTION
+            services.AddTransient<IParkDAL>(d => new ParkSqlDAL(connectionString));
+            services.AddTransient<IWeatherDAL>(d => new WeatherSqlDAL(connectionString));
+            services.AddTransient<ISurveyDAL>(d => new SurveySqlDAL(connectionString));
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
