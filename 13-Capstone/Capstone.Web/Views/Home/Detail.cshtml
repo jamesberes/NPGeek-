@@ -18,3 +18,12 @@
 <p>@Model.Park.Description</p>
 <p>@Model.Park.EntryFee</p>
 <p>@Model.Park.NumberOfSpecies</p>
+
+@foreach (var day in Model.Weather)
+{
+    <p><img src="~/img/weather/@(day.Forecast).png" /></p>
+    <p>@day.FiveDayForecastValue</p>
+    <p>@day.High</p>
+    <p>@day.Low</p>
+    <p>@day.Forecast</p>
+}
