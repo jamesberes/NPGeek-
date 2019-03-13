@@ -15,11 +15,6 @@ namespace Capstone.Web.Controllers
             return View();
         }
 
-        public IActionResult List()
-        {
-            return View();
-        }
-
         public IActionResult Detail()
         {
             return View();
