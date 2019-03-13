@@ -25,10 +25,5 @@ namespace Capstone.Web.Models
             new SelectListItem() { Text = "Active" },
             new SelectListItem() { Text = "Extremely Active" }
         };
-
-        //public static List<SelectListItem> Parks = new List<SelectListItem>(IList<Park> parks)
-        //{
-
-        //}
     }
 }
