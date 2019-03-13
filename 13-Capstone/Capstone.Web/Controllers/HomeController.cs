@@ -21,17 +21,17 @@ namespace Capstone.Web.Controllers
             this.weatherDal = weatherDal;
         }
 
-        public IActionResult Detail()
-        {
-            return View();
-        }
-
         [HttpGet]
         public IActionResult Index()
         {
             var parks = parkDal.GetAllParks();
 
             return View(parks);
+        }
+
+        public IActionResult Detail()
+        {
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
