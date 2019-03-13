@@ -9,7 +9,7 @@
 {
     <div class="park">
         <div class="image">
-            <p><img src="~/img/parks/@(park.ParkCode).jpg" /></p>
+            <p><a asp-controller="home" asp-action="detail" asp-route-parkCode="@park.ParkCode"><img src="~/img/parks/@(park.ParkCode).jpg" /></a></p>
         </div>
         <div class="information">
             <p class="link"><a asp-controller="home" asp-action="detail" asp-route-parkCode="@park.ParkCode">@park.ParkName</a></p>
