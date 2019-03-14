@@ -9,6 +9,7 @@ namespace Capstone.Web.Models
     {
         public Park Park { get; set; }
         public IList<Weather> Weather { get; set; }
+        public string TempScale { get; set; }
 
         public DetailViewModel(Park park, IList<Weather> weather)
         {

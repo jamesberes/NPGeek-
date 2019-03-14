@@ -31,6 +31,9 @@ namespace Capstone.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //ADD SESSION
+            services.AddSession();
+
             //SET CONNECTION STRING DEFAULT
             string connectionString = Configuration.GetConnectionString("Default");
 
@@ -57,6 +60,9 @@ namespace Capstone.Web
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            //ADD SESSION PART 2
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
