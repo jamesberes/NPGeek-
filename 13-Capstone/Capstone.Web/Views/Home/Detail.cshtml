@@ -2,6 +2,17 @@
 @{
     ViewData["Title"] = "Detail";
 }
+<link href="~/css/detail.css" rel="stylesheet" />
+
+<style>
+    form{
+        display: inline-block;
+    }
+    .quoteroni {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 20px;
+    }
+</style>
 
 <div>
     <div class="detail-header-container">
@@ -47,15 +58,16 @@
         </p>
     </div>
 
-    <p class=blockquote-reverse>"@Model.Park.InspirationalQuote"</p>
-    <p class="blockquote-reverse">-@Model.Park.QuoteSource</p>
+    <p class="blockquote-reverse quoteroni">"@Model.Park.InspirationalQuote"</p>
+    <p class="blockquote-reverse quoteroni">-@Model.Park.QuoteSource</p>
 
     <br />
     <br />
 
     @*TACKLE THE WEATHA CHANGE!!!*@
+    
     <form asp-action="SetTempScale" method="post" asp-route-parkCode="@Model.Park.ParkCode">
-        <button class="btn btn-primary">°F</button>
+        <button style="display: inline-block" class="btn btn-primary">°F</button>
         <input type="hidden" value="tempF" name="temperatureScale" />
     </form>
     <form asp-action="SetTempScale" method="post" asp-route-parkCode="@Model.Park.ParkCode">
