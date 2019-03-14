@@ -1,20 +1,26 @@
-﻿@model DetailViewModel
+﻿@using Microsoft.AspNetCore.Mvc;
+using Capstone.Web.Models;
+using Capstone.Web.DAL;
+@using Microsoft.AspNetCore.Http;
+@model DetailViewModel
 @{
     ViewData["Title"] = "Detail";
 }
 
 <style>
-    .weather-info{
+    .weather-info {
         display: inline-block;
         max-width: 150px;
         vertical-align: top;
     }
-    .weather-image{
+
+    .weather-image {
         height: 150px;
         margin: 0px;
         padding: 0px;
     }
-    .recommendations{
+
+    .recommendations {
         margin: 0px 5px 0px 5px;
     }
 </style>
@@ -70,13 +76,31 @@
     <br />
     <br />
 
+    @*TACKLE THE WEATHA CHANGE!!!*@
+    <form asp-action="SetTempScale" method="post" asp-route-parkCode="@Model.Park.ParkCode">
+        <button class="btn btn-primary">°F</button>
+        <input type="hidden" value="tempF" name="temperatureScale" />
+    </form>
+    <form asp-action="SetTempScale" method="post" asp-route-parkCode="@Model.Park.ParkCode">
+        <button class="btn btn-primary">°C</button>
+        <input type="hidden" value="tempC" name="temperatureScale" />
+    </form>
+
     @*TACKLE THE WEATHAAAAAAAAA*@
     <div id="weather-table">
         @foreach (var day in Model.Weather)
         {
         <div class="weather-info">
             <img class="weather-image" src="~/img/weather/@(day.Forecast).png" />
+            @*@if (HttpContext.Session.GetString("tempScale") == "F")*@
+            @if (Model.TempScale == "F")
+            {
             <p><strong>High: </strong>@day.High  <strong>Low: </strong>@day.Low</p>
+            }
+            else
+            {
+            <p><strong>High: </strong>@day.HighCelcius @*Do math or make property?*@  <strong>Low: </strong>@day.LowCelcius</p>
+            }
             <p class="recommendations">@Model.TempRecommendations(day)</p>
         </div>
         }

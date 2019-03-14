@@ -28,9 +28,29 @@ namespace Capstone.Web.Controllers
             IList<Weather> weather = weatherDal.GetWeatherByPark(parkCode);
 
             //send in a temperature scale?
+            //get tempScale (default or via SetTempScale)
+            //I feel like I'm not actually using the session b/c I'm saving it as a value in the model. 
+            string tempScale = HttpContext.Session.GetString("tempScale");
+
+            //if not set yet
+            if (tempScale == null)
+            {
+                tempScale = "F";
+                HttpContext.Session.SetString("tempScale", tempScale); //this defaults the weather to Fahrenheit scale (could base on location?)
+            }
+            //if set to fahrenheit **FROM** celcius
+            else if (tempScale == "tempF") 
+            {
+                tempScale = "F"; //set tempscale to F (for detail page weather report) if fahrenheit is chosen by button
+            }
+            //if set to celcius from fahrenheit
+            else
+            {
+                tempScale = "C"; //set tempscale to C (for detail page weather report) if fahrenheit is chosen by button
+            }
 
             DetailViewModel dvm = new DetailViewModel(park, weather);
-
+            dvm.TempScale = tempScale; //load the detailViewModel with our tempscale. 
             return View(dvm);
         }
 
@@ -40,6 +60,17 @@ namespace Capstone.Web.Controllers
             var parks = parkDal.GetAllParks();
 
             return View(parks);
+        }
+
+        //action for our TempScale Buttons in the Detail View Model.
+        [HttpPost]
+        public IActionResult SetTempScale(string parkCode, string temperatureScale)
+        {
+            //saves the new choice into session string "tempScale"
+            HttpContext.Session.SetString("tempScale", temperatureScale);
+
+            //redirect to Detail page of home controller and pass the parkCode (needed)
+            return RedirectToAction("Detail", "Home", new { parkCode }); //From Andrew's lecture
         }
 
 
