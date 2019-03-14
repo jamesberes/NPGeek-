@@ -49,17 +49,16 @@
         </p>
     </div>
 
-    <div class="block">
-        <p class=blockquote-reverse>"@Model.Park.InspirationalQuote"</p>
-        <p class="blockquote-reverse">-@Model.Park.QuoteSource</p>
-    </div>
+    <p class="blockquote-reverse quoteroni">"@Model.Park.InspirationalQuote"</p>
+    <p class="blockquote-reverse quoteroni">-@Model.Park.QuoteSource</p>
 
     <br />
     <br />
 
     @*TACKLE THE WEATHA CHANGE!!!*@
+    
     <form asp-action="SetTempScale" method="post" asp-route-parkCode="@Model.Park.ParkCode">
-        <button class="btn btn-primary">°F</button>
+        <button style="display: inline-block" class="btn btn-primary">°F</button>
         <input type="hidden" value="tempF" name="temperatureScale" />
     </form>
     <form asp-action="SetTempScale" method="post" asp-route-parkCode="@Model.Park.ParkCode">
