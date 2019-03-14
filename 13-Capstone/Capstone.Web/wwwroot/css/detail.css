@@ -13,3 +13,21 @@
 .recommendations {
     margin: 0px 5px 0px 5px;
 }
+
+
+#detail-header-image {
+    width: 90%;
+    height: auto;
+    overflow: hidden;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form {
+    display: inline-block;
+}
+
+.block {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

@@ -3,6 +3,8 @@
     ViewData["Title"] = "Detail";
 }
 
+<link href="~/css/detail.css" rel="stylesheet" />
+
 <div>
     <div class="detail-header-container">
         <img id="detail-header-image" src="~/img/parks/@(Model.Park.ParkCode).jpg" />
@@ -47,8 +49,10 @@
         </p>
     </div>
 
-    <p class=blockquote-reverse>"@Model.Park.InspirationalQuote"</p>
-    <p class="blockquote-reverse">-@Model.Park.QuoteSource</p>
+    <div class="block">
+        <p class=blockquote-reverse>"@Model.Park.InspirationalQuote"</p>
+        <p class="blockquote-reverse">-@Model.Park.QuoteSource</p>
+    </div>
 
     <br />
     <br />
