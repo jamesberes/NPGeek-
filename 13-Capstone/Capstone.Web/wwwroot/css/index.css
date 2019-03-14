@@ -2,14 +2,14 @@
     display: flex;
 }
 
-    .park .information {
-        padding-left: 15px;
-    }
+.park .information {
+    padding-left: 15px;
+}
 
-    .link {
-        font-size: 2em;
-    }
+.link {
+    font-size: 2em;
+}
 
-    .link a {
-        color:aqua;
-    }
+.link a {
+    color:aqua;
+}

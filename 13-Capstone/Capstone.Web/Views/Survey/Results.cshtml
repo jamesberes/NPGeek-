@@ -4,21 +4,9 @@
     ViewData["Title"] = "Results";
 }
 
-<style>
-    .result-container{
-        display: flex;
-        padding: 10px;
-        flex-direction: row;
-    }
+<link href="~/css/results.css" rel="stylesheet" />
 
-    .result-info{
-        flex-direction: column;
-        padding-left: 15px;
-    }
-</style>
-
-
-<h2>Results</h2>
+<h2>Survey Results</h2>
 
 @foreach (KeyValuePair<string, int> kvp in Model.Results)
 {
@@ -29,9 +17,9 @@
                 <img id="survey-result-img" src="~/img/parks/@(kvp.Key).jpg" />
             </div>
             <div class="result-info">
-                <p><strong>Votes:</strong> @kvp.Value</p>
-                <p>@(Model.Parks.FirstOrDefault(prop => prop.ParkCode == kvp.Key).ParkName)</p>
+                <p class="link"><a asp-controller="home" asp-action="detail" asp-route-parkCode="@kvp.Key">@(Model.Parks.FirstOrDefault(prop => prop.ParkCode == kvp.Key).ParkName)</a></p>
                 <p>@(Model.Parks.FirstOrDefault(p => p.ParkCode == kvp.Key).Description)</p>
+                <p class="badge"><strong>Votes:</strong> @kvp.Value</p>
             </div>
         </div>
     }

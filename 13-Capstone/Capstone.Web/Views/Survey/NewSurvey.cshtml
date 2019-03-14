@@ -4,17 +4,7 @@
     ViewData["Title"] = "NewSurvey";
 }
 
-<style>
-    select {
-        color: black;
-    }
-
-    .form-control {
-        display: inline-block;
-        width: 200px;
-        height: 20px;
-    }
-</style>
+<link href="~/css/survey.css" rel="stylesheet" />
 
 <h4>TAKE OUR SURVEY!</h4>
 <hr />
@@ -38,13 +28,15 @@
     </div>
     <div class="form-group">
         <label asp-for="ActivityLevel" class="control-label"></label>
-        <select asp-for="ActivityLevel" asp-items="Survey.ActivityLevels"></select>
         <span asp-validation-for="ActivityLevel" class="text-danger"></span>
+        @foreach (var item in Survey.ActivityLevels)
+        {
+            <input asp-for="ActivityLevel" type="radio" value="@item.Text" /> @item.Text
+        }
     </div>
-    <div class="form-group">
-        <input type="submit" value="Submit" class="btn btn-default" />
-    </div>
+    <input type="submit" value="Submit" class="btn btn-default" />
 </form>
+
 
 
 @section Scripts {

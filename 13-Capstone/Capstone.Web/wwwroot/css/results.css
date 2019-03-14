@@ -1,0 +1,15 @@
+﻿.result-container {
+    display: flex;
+    padding: 10px;
+    flex-direction: row;
+}
+
+.result-info {
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+.link a {
+    color: aqua;
+    font-size: 2em;
+}

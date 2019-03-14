@@ -1,0 +1,17 @@
+﻿select {
+    color: black;
+}
+
+.form-control {
+    display: inline-block;
+    width: 200px;
+    height: 20px;
+}
+
+label {
+    margin-right: 5px;
+}
+
+input[type="radio"] {
+    margin: 3px;
+}
