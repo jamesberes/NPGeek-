@@ -7,7 +7,9 @@
 
 <div>
     <div class="detail-header-container">
-        <img id="detail-header-image" src="~/img/parks/@(Model.Park.ParkCode).jpg" />
+        <div id="detail-header-image">
+            <img src="~/img/parks/@(Model.Park.ParkCode).jpg" />
+        </div>
         <div>
             <h2 id="detail-header-park-name">@Model.Park.ParkName</h2>
         </div>
@@ -56,7 +58,7 @@
     <br />
 
     @*TACKLE THE WEATHA CHANGE!!!*@
-    
+
     <form asp-action="SetTempScale" method="post" asp-route-parkCode="@Model.Park.ParkCode">
         <button style="display: inline-block" class="btn btn-primary">°F</button>
         <input type="hidden" value="tempF" name="temperatureScale" />
@@ -70,19 +72,19 @@
     <div id="weather-table">
         @foreach (var day in Model.Weather)
         {
-        <div class="weather-info">
-            <img class="weather-image" src="~/img/weather/@(day.Forecast).png" />
-            @*@if (HttpContext.Session.GetString("tempScale") == "F")*@
-            @if (Model.TempScale == "F")
-            {
-            <p><strong>High: </strong>@day.High  <strong>Low: </strong>@day.Low</p>
-            }
-            else
-            {
-            <p><strong>High: </strong>@day.HighCelcius @*Do math or make property?*@  <strong>Low: </strong>@day.LowCelcius</p>
-            }
-            <p class="recommendations">@Model.TempRecommendations(day)</p>
-        </div>
+            <div class="weather-info">
+                <img class="weather-image" src="~/img/weather/@(day.Forecast).png" />
+                @*@if (HttpContext.Session.GetString("tempScale") == "F")*@
+                @if (Model.TempScale == "F")
+                {
+                    <p><strong>High: </strong>@day.High  <strong>Low: </strong>@day.Low</p>
+                }
+                else
+                {
+                    <p><strong>High: </strong>@day.HighCelcius @*Do math or make property?*@  <strong>Low: </strong>@day.LowCelcius</p>
+                }
+                <p class="recommendations">@Model.TempRecommendations(day)</p>
+            </div>
         }
     </div>
 </div>

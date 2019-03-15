@@ -15,14 +15,21 @@
 }
 
 
-#detail-header-image {
-    width: 90%;
-    height: auto;
-    overflow: hidden;
+/*#detail-header-image {
+    width: auto;
+    height: 350px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    overflow: hidden;
+    position: relative;
 }
+
+    #detail-header-image img {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        position: absolute;
+        bottom: 0%;
+    }*/
 
 form {
     display: inline-block;
