@@ -15,21 +15,29 @@
 }
 
 
-/*#detail-header-image {
+.detail-header-image {
     width: auto;
     height: 350px;
     display: block;
     overflow: hidden;
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-    #detail-header-image img {
-        width: 100%;
-        height: auto;
-        overflow: hidden;
-        position: absolute;
-        bottom: 0%;
-    }*/
+.detail-header-image img {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0%;
+    border-radius: 20px;
+}
+.detail-header-image img:hover{
+
+}
+
+
 
 form {
     display: inline-block;
