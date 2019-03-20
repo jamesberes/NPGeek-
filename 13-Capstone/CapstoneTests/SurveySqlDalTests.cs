@@ -52,21 +52,26 @@ namespace CapstoneTests
         [TestMethod]
         public void GetFavoriteParkBySurveyCountTest() //Dictionary<string, int> GetFavoriteParkBySurveyCount()
         {
-            //Arange
+            //Arrange
             ISurveyDAL surveySqlDAL = new SurveySqlDAL(connectionString);
 
             //ACT
+            int count = 0; //count number of surveys per park entry
             Dictionary<string, int> surveys = surveySqlDAL.GetFavoriteParkBySurveyCount();
+            foreach (KeyValuePair<string, int> survey in surveys)
+            {
+                count += survey.Value;
+            }
 
             //Assert
             Assert.IsNotNull(surveys, "Favorite surveys list is empty!");
-            Assert.AreEqual(parkCount, surveys.Count, $"Expected a count of {surveyCount} for parks");
+            Assert.AreEqual(surveyCount, count, $"Expected a count of {surveyCount} for parks.");
         }
 
         [TestMethod]
         public void SaveNewSurveyTest() //void SaveNewSurvey(Survey survey)
         {
-            //Arange
+            //Arrange
             ISurveyDAL surveySqlDAL = new SurveySqlDAL(connectionString);
             Dictionary<string, int> surveys = surveySqlDAL.GetFavoriteParkBySurveyCount();
             Survey survey = new Survey()
@@ -87,7 +92,7 @@ namespace CapstoneTests
 
             //Assert
             Assert.IsNotNull(surveysNew, "Yosemite should have at least 1 vote(survey).");
-            Assert.AreEqual((before+1), after, $"Yosemite should have had {before} surveys before the add and {after} surveys after the add");
+            Assert.AreEqual((before+1), after, $"Yosemite should have had {before} surveys before the add and {after} surveys after the add.");
         }
     }
 }

@@ -47,7 +47,7 @@ namespace CapstoneTests
         [TestMethod]
         public void GetAllParksTest() //IList<Park> GetAllParks()
         {
-            //Arange
+            //Arrange
             IWeatherDAL weatherSqlDAL = new WeatherSqlDAL(connectionString);
 
             //ACT

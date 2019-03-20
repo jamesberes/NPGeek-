@@ -47,7 +47,7 @@ namespace CapstoneTests
         [TestMethod]
         public void GetAllParksTest() //IList<Park> GetAllParks()
         {
-            //Arange
+            //Arrange
             IParkDAL parkSqlDAL = new ParkSqlDAL(connectionString);
 
             //ACT
@@ -61,7 +61,7 @@ namespace CapstoneTests
         [TestMethod]
         public void GetParkTest() //Park GetPark(string parkCode)
         {
-            //Arange
+            //Arrange
             IParkDAL parkSqlDAL = new ParkSqlDAL(connectionString);
 
 
@@ -77,7 +77,7 @@ namespace CapstoneTests
         [TestMethod]
         public void GetParkSelectListTest() //List<SelectListItem> GetParkSelectList()
         {
-            //Arange
+            //Arrange
             IParkDAL parkSqlDAL = new ParkSqlDAL(connectionString);
 
             //ACT
