@@ -81,7 +81,15 @@ namespace CapstoneTests
                 State = "Ohio",
                 ActivityLevel = "Inactive"
             };
-            int before = surveys["YNP2"];
+            int before;
+            if (surveys.ContainsKey("YNP2"))
+            {
+                before = surveys["YNP2"];
+            }
+            else
+            {
+                before = 0;
+            }
 
             //ACT
             surveySqlDAL.SaveNewSurvey(survey);
